@@ -1,5 +1,9 @@
 package org.patterns;
 
+import org.patterns.strategy.payment.CreditCard;
+import org.patterns.strategy.payment.Paypal;
+import org.patterns.strategy.payment.Product;
+import org.patterns.strategy.payment.ShoppingCart;
 import org.patterns.strategy.scoreboard.Balloon;
 import org.patterns.strategy.scoreboard.Clown;
 import org.patterns.strategy.scoreboard.Scoreboard;
@@ -8,9 +12,13 @@ import org.patterns.strategy.scoreboard.Scoreboard;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     public static void main(String[] args) {
-        Scoreboard scoreboard = new Scoreboard(new Balloon());
-        scoreboard.showScore(10, 5);
-        scoreboard.setAlgorithmBase(new Clown());
-        scoreboard.showScore(10, 5);
+        var pen = new Product("abc123", 5);
+        var pencil = new Product("qwe456", 3);
+
+        var shoppingCart = new ShoppingCart();
+        shoppingCart.addProduct(pen);
+        shoppingCart.addProduct(pencil);
+
+        shoppingCart.pay(new Paypal());
     }
 }
