@@ -1,5 +1,9 @@
 package org.patterns;
 
+import org.patterns.decorator.BasicIceCream;
+import org.patterns.decorator.ChocolateIceCream;
+import org.patterns.decorator.IceCream;
+import org.patterns.decorator.VanillaIceCream;
 import org.patterns.observer.EmailTopic;
 import org.patterns.observer.EmailTopicSubscriber;
 import org.patterns.observer.Observer;
@@ -51,8 +55,22 @@ public class Main {
         topic.postMessage("Hello! This is a new message to all subscribers!");
     }
 
+    public static void decorator() {
+        var basicIceCream = new BasicIceCream();
+        System.out.printf("\n %s", basicIceCream.cost());
+
+        // Add vanilla to the order
+        var vanilla = new VanillaIceCream(basicIceCream);
+        System.out.printf("\n %s", vanilla.cost());
+
+        // Add chocolate to the order
+        var chocolate = new ChocolateIceCream(vanilla);
+        System.out.printf("\n %s", chocolate.cost());
+    }
+
     public static void main(String[] args) {
         // strategy();
-        observer();
+        // observer();
+        decorator();
     }
 }
