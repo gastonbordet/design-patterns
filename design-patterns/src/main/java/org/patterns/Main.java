@@ -2,21 +2,15 @@ package org.patterns;
 
 import org.patterns.decorator.BasicIceCream;
 import org.patterns.decorator.ChocolateIceCream;
-import org.patterns.decorator.IceCream;
 import org.patterns.decorator.VanillaIceCream;
+import org.patterns.factory.ChicagoBurgerStore;
+import org.patterns.factory.NYBurguerStore;
 import org.patterns.observer.EmailTopic;
 import org.patterns.observer.EmailTopicSubscriber;
 import org.patterns.observer.Observer;
-import org.patterns.strategy.payment.CreditCard;
 import org.patterns.strategy.payment.Paypal;
 import org.patterns.strategy.payment.Product;
 import org.patterns.strategy.payment.ShoppingCart;
-import org.patterns.strategy.payment.Paypal;
-import org.patterns.strategy.payment.Product;
-import org.patterns.strategy.payment.ShoppingCart;
-import org.patterns.strategy.scoreboard.Balloon;
-import org.patterns.strategy.scoreboard.Clown;
-import org.patterns.strategy.scoreboard.Scoreboard;
 
 import java.util.List;
 
@@ -68,9 +62,18 @@ public class Main {
         System.out.printf("\n %s", chocolate.cost());
     }
 
+    public static void factory() {
+        var chicagoBurgerStore = new ChicagoBurgerStore();
+        var nyBurgerStore = new NYBurguerStore();
+
+        var burger1 = chicagoBurgerStore.orderHamburger("cheese");
+        var burger2 = nyBurgerStore.orderHamburger("cheese");
+    }
+
     public static void main(String[] args) {
         // strategy();
         // observer();
-        decorator();
+        // decorator();
+        factory();
     }
 }
