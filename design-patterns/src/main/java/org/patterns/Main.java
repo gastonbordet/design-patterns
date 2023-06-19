@@ -8,6 +8,8 @@ import org.patterns.factory.NYBurguerStore;
 import org.patterns.observer.EmailTopic;
 import org.patterns.observer.EmailTopicSubscriber;
 import org.patterns.observer.Observer;
+import org.patterns.singleton.EagerSingleton;
+import org.patterns.singleton.LazySingleton;
 import org.patterns.strategy.payment.Paypal;
 import org.patterns.strategy.payment.Product;
 import org.patterns.strategy.payment.ShoppingCart;
@@ -70,10 +72,21 @@ public class Main {
         var burger2 = nyBurgerStore.orderHamburger("cheese");
     }
 
+    public static void singleton() {
+        var eager = EagerSingleton.getInstance();
+        var lazySingleton = LazySingleton.getInstance();
+
+        System.out.println("eager singleton obj 1: " + eager);
+        System.out.println("eager singleton obj 2: " + EagerSingleton.getInstance());
+        System.out.println("lazy singleton obj 1: " + lazySingleton);
+        System.out.println("lazy singleton obj 2: " + LazySingleton.getInstance());
+    }
+
     public static void main(String[] args) {
         // strategy();
         // observer();
         // decorator();
-        factory();
+        // factory();
+        singleton();
     }
 }
