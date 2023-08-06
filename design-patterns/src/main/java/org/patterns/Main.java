@@ -1,5 +1,9 @@
 package org.patterns;
 
+import org.patterns.command.Gameboy;
+import org.patterns.command.MarioCharacterReceiver;
+import org.patterns.command.MarioDownCommand;
+import org.patterns.command.MarioUpCommand;
 import org.patterns.decorator.BasicIceCream;
 import org.patterns.decorator.ChocolateIceCream;
 import org.patterns.decorator.VanillaIceCream;
@@ -82,11 +86,22 @@ public class Main {
         System.out.println("lazy singleton obj 2: " + LazySingleton.getInstance());
     }
 
+    public static void command() {
+        var marioReceiver = new MarioCharacterReceiver("mario");
+        var marioUpCommand = new MarioUpCommand(marioReceiver);
+        var marioDownCommand = new MarioDownCommand(marioReceiver);
+        var gameboy = new Gameboy(marioUpCommand, marioDownCommand, null, null);
+
+        gameboy.arrowUp();
+        gameboy.arrowDown();
+    }
+
     public static void main(String[] args) {
         // strategy();
         // observer();
         // decorator();
         // factory();
-        singleton();
+        // singleton();
+        command();
     }
 }
