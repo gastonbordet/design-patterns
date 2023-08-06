@@ -1,5 +1,6 @@
 package org.patterns;
 
+import org.patterns.adapter.*;
 import org.patterns.command.Gameboy;
 import org.patterns.command.MarioCharacterReceiver;
 import org.patterns.command.MarioDownCommand;
@@ -96,12 +97,26 @@ public class Main {
         gameboy.arrowDown();
     }
 
+    public static void adapter() {
+        var mouse = new Mouse();
+        var keyboard = new Keyboard();
+        var headphone = new Headphone();
+        var computer = new Computer();
+
+        computer.connectViaBluetooth(mouse);
+        computer.connectViaBluetooth(keyboard);
+        computer.connectViaBluetooth(new HeadphoneWiredAdapter(headphone));
+
+        System.out.println(String.format("%d devices connected!", computer.getDevices().size()));
+    }
+
     public static void main(String[] args) {
         // strategy();
         // observer();
         // decorator();
         // factory();
         // singleton();
-        command();
+        // command();
+        adapter();
     }
 }
