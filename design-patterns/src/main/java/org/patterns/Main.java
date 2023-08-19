@@ -8,6 +8,10 @@ import org.patterns.command.MarioUpCommand;
 import org.patterns.decorator.BasicIceCream;
 import org.patterns.decorator.ChocolateIceCream;
 import org.patterns.decorator.VanillaIceCream;
+import org.patterns.facade.CPU;
+import org.patterns.facade.ComputerFacade;
+import org.patterns.facade.HardDrive;
+import org.patterns.facade.Memory;
 import org.patterns.factory.ChicagoBurgerStore;
 import org.patterns.factory.NYBurguerStore;
 import org.patterns.observer.EmailTopic;
@@ -110,6 +114,16 @@ public class Main {
         System.out.println(String.format("%d devices connected!", computer.getDevices().size()));
     }
 
+    public static void facade() {
+        var computer = new ComputerFacade(
+          new CPU(),
+          new Memory(),
+          new HardDrive()
+        );
+
+        computer.start();
+    }
+
     public static void main(String[] args) {
         // strategy();
         // observer();
@@ -117,6 +131,7 @@ public class Main {
         // factory();
         // singleton();
         // command();
-        adapter();
+        // adapter();
+        facade();
     }
 }
