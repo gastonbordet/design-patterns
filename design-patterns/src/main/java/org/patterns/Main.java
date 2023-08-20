@@ -22,6 +22,8 @@ import org.patterns.singleton.LazySingleton;
 import org.patterns.strategy.payment.Paypal;
 import org.patterns.strategy.payment.Product;
 import org.patterns.strategy.payment.ShoppingCart;
+import org.patterns.template.EndlessRunnerGame;
+import org.patterns.template.FootballGame;
 
 import java.util.List;
 
@@ -124,6 +126,14 @@ public class Main {
         computer.start();
     }
 
+    public static void template() {
+        var footballGame = new FootballGame();
+        var endlessRunnerGame = new EndlessRunnerGame();
+
+        endlessRunnerGame.play();
+        footballGame.play();
+    }
+
     public static void main(String[] args) {
         // strategy();
         // observer();
@@ -132,6 +142,7 @@ public class Main {
         // singleton();
         // command();
         // adapter();
-        facade();
+        // facade();
+        template();
     }
 }
