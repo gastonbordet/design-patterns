@@ -14,6 +14,9 @@ import org.patterns.facade.HardDrive;
 import org.patterns.facade.Memory;
 import org.patterns.factory.ChicagoBurgerStore;
 import org.patterns.factory.NYBurguerStore;
+import org.patterns.iterator.DevStoreCatalog;
+import org.patterns.iterator.GeekyStoreCatalog;
+import org.patterns.iterator.Seller;
 import org.patterns.observer.EmailTopic;
 import org.patterns.observer.EmailTopicSubscriber;
 import org.patterns.observer.Observer;
@@ -134,6 +137,15 @@ public class Main {
         footballGame.play();
     }
 
+    public static void iterator() {
+        var geekyStoreCatalog = new GeekyStoreCatalog();
+        var devStoreCatalog = new DevStoreCatalog();
+        var seller = new Seller();
+
+        seller.printCatalog(geekyStoreCatalog.createIterator());
+        seller.printCatalog(devStoreCatalog.createIterator());
+    }
+
     public static void main(String[] args) {
         // strategy();
         // observer();
@@ -143,6 +155,7 @@ public class Main {
         // command();
         // adapter();
         // facade();
-        template();
+        // template();
+        iterator();
     }
 }
